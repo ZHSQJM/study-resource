@@ -1,0 +1,7 @@
+<z-swiper></z-swiper>
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+<z-category iconList="{{iconList}}"></z-category>
+
+<z-list></z-list>
+  
+</scroll-view>

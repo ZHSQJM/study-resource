@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+	 
+	  "z-swiper":"/component/swiper/swiper",
+	    "z-category":"/component/category/index",
+		"z-list":"/component/list/list"
+  }
+}

@@ -1,0 +1,40 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{visitTotal}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-attentionfill"></text> 下载数</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue">{{starCount}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-favorfill"></text> 我的资源</view>
+    </view>
+    <view class="flex flex-sub flex-direction">
+      <view class="text-xxl text-green">{{forksCount}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-fork"></text> 积分</view>
+    </view>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <navigator class="cu-item arrow"  url="/pages/upload/index" hover-class="none">
+      <view class="content">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-grey">提交资源</text>
+      </view>
+    </navigator>
+	<navigator class="cu-item arrow" url="/pages/myresource/index" hover-class="none">
+	  <view class="content">
+	    <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+	    <text class="text-grey">我的资源</text>
+	  </view>
+	</navigator>
+    <navigator class="cu-item arrow" url="/pages/myrcord/index" hover-class="none">
+      <view class="content">
+        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">我的记录</text>
+      </view>
+    </navigator>
+  </view>
+  <view class="cu-tabbar-height"></view>
+</scroll-view>
