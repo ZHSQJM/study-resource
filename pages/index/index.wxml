@@ -1,7 +1,16 @@
-<z-swiper></z-swiper>
-<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
-<z-category iconList="{{iconList}}"></z-category>
-
-<z-list></z-list>
+<view wx:if="{{!searching}}">
+   <view class="header">
+        <view class='box' bind:tap="onSearching">
+            <image src="/images/icon/search.png" />
+            <text>搜索资源</text>
+        </view>
+    </view>
   
-</scroll-view>
+    <view class="swiper">
+    <z-swiper ></z-swiper>
+    <z-category iconList="{{categorys}}" bind:onTap="onTap"></z-category>
+    <z-list></z-list>
+    </view>
+</view>
+
+  <z-search bind:cancel="onCancel" wx:if="{{searching}}" /> 

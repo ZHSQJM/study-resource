@@ -6,19 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-           elements: [],
+      elements: [],
+      pageNo:1,
+      pageSize:10,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     const id =options.id;
-	
-    resource.getResource(id,0).then(res=>this.setData({
-		elements:res
-	}))
+    resource.getResource(this.data.pageNo,this.data.pageSize,"","",id,0)
+    .then(res=>this.setData({
+		       elements:res.content
+	       }))
   },
 
   /**

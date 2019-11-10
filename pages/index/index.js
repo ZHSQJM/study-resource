@@ -10,12 +10,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-      iconList:[]
+      categorys:[],
+      searching: false,
   },
 
 
-  
 
+ //跳转到相对应的资源分类列表页面
+  onTap:function(event){
+    let id = event.detail.id;
+    wx.navigateTo({
+		url:"/pages/list/list?id="+id
+	  })
+  },
+
+  onSearching(event) {
+    this.setData({
+      searching: true
+    })
+  },
+   //取消返回主页
+  onCancel(event) {
+    this.setData({
+      searching: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,7 +42,7 @@ Page({
   onLoad: function (options) {
 	  //获取类目
      category.getCategory().then(res=>{
-		 this.setData({iconList:res})
+       this.setData({ categorys:res})
 	 })
 	  
           

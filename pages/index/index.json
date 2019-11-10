@@ -2,7 +2,9 @@
   "usingComponents": {
 	 
 	  "z-swiper":"/component/swiper/swiper",
-	    "z-category":"/component/category/index",
-		"z-list":"/component/list/list"
+	  "z-category":"/component/category/index",
+		"z-list":"/component/list/list",
+    "z-search": "/component/search/search",
+    "z-resource": "/component/resource/index"
   }
 }

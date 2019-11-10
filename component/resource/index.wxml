@@ -1,0 +1,17 @@
+ <view class="cu-list menu-avatar">
+    <navigator open-type="navigate" class="cu-item"  wx:for="{{resource}}"  wx:key="id"  url="/pages/resource-detail/index?id={{item.id}}">
+      <view class="cu-avatar round lg" style="background-image:url({{item.phothUrl}});"></view>
+      <view class="content">
+        <view class="text-grey">{{item.name}}</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">
+			<text class="margin-right-xs"></text>{{item.description}}
+          </text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">{{item.createTime}}</view>
+        <view class="cu-tag round bg-orange light">{{item.integral}}</view>
+      </view>
+    </navigator>
+  </view>
