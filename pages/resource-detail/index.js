@@ -1,11 +1,17 @@
-// pages/resource-detail/index.js
+import {resourceService} from '../../service/resource.js'
+const resource = new resourceService()
+
+import {exchangerService} from '../../service/exchanger.js'
+const exchanger = new exchangerService()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+       resource:Object,
+	   isPassword:false,
+	   isMoadl:false,
   },
 
   /**
@@ -13,8 +19,34 @@ Page({
    */
   onLoad: function (options) {
     const id =options.id;
-	console.log(id)
+	resource.findResourceById('orwI44zPZZNYGpZ4ERTcZjYE9SAM',id).then(res=>{
+		if(res.password!=null){
+			this.setData({isPassword:true})
+		}
+		this.setData({resource:res})
+		},
+		)
   },
+  
+  
+  exchange:function(event) {
+	  this.setData({
+		  isMoadl:true
+	  })
+	// exchanger.exchangerRecords('orwI44zPZZNYGpZ4ERTcZjYE9SAM',this.data.resource.id,this.data.resource.integral).then(res=>{
+	// 	console.log(res);
+	// 	this.data.resource.password = res;
+	// 	this.setData({isPassword:true,resource:this.data.resource})
+	// })
+  },
+  
+  hideModal:function(event){
+	   let isModal = event.detail.isModal;
+	   this.setData({
+	   		  isMoadl:isModal
+	   })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

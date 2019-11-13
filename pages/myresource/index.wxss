@@ -1,1 +1,9 @@
-/* pages/myresource/index.wxss */
+.loading {
+    margin: 50rpx 0 50rpx 0;
+}
+
+.loading-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}

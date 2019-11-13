@@ -1,4 +1,5 @@
 <z-resource resource="{{elements}}" />
   
-<!--  navigator  
-    -->
+  <z-loading  class="loading-center" wx:if="{{loadingCenter}}"/>
+  <z-loading  class="loading" wx:if="{{loading}}"/>
+  

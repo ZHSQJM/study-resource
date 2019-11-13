@@ -1,6 +1,8 @@
 import {
 	categoryService
 } from '../../service/category.js'
+
+import {random} from '../../utils/common.js'
 const category = new categoryService()
 
 
@@ -12,6 +14,7 @@ Page({
   data: {
       categorys:[],
       searching: false,
+	  more:''
   },
 
 
@@ -87,7 +90,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+       this.setData({
+		   more:random(16)
+	   })
+         
   },
 
   /**

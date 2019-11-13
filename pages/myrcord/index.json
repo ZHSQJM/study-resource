@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+        "z-resource": "/component/resource/index",
+        "z-loading": "/component/loading/index"
+  },
+  "navigationBarTitleText": "提交记录"
 }

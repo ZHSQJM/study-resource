@@ -93,3 +93,11 @@
 .books-container {
     margin-top: 100rpx;
 }
+
+.empty-tip {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+}

@@ -1,4 +1,36 @@
 <scroll-view scroll-y class="scrollPage">
   <image src='/images/BasicsBg.png' mode='widthFix' class='png' style='width:100%;height:486rpx'></image>
+  
+ <view class="cu-form-group margin-top">
+  <!-- 	<view class="title">名称</view>
+  	<input value="{{resource.name}}"disabled='true' ></input>
+  </view>
+   <view class="cu-form-group"> -->
+		<view class="title">地址</view>
+		<input value="{{resource.url}}" disabled='true' ></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">所需积分</view>
+		<input value="{{resource.integral}}"disabled='true' ></input>
+	</view>
 
+	<view wx:if="{{isPassword}}" class="cu-form-group">
+		<view class="title">密码</view>
+		<input  value="{{resource.password}}" disabled='true' ></input>
+	</view>
+	
+	<view class="cu-form-group">
+		<view class="title">上传时间</view>
+		<input value="{{resource.createTime}}" disabled='true' ></input>
+	</view>
+	<view class="cu-form-group align-start">
+		<view class="title">描述</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}"  value="{{resource.description}}" bindinput="textareaBInput"disabled='true' ></textarea>
+	</view>
+	
+	<view  wx:if="{{!isPassword}}" class="padding flex flex-direction">
+	  <button class="cu-btn bg-red margin-tb-sm lg"  bind:tap="exchange">兑换-{{resource.integral}}</button>
+	</view>
+	
+	<z-modal wx:if="{{isMoadl}}" bind:hideModal="hideModal"/>
 </scroll-view>

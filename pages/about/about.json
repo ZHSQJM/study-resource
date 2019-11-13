@@ -1,3 +1,6 @@
 {
-  "component": true
+    "navigationBarTitleText": "个人中心",
+	"usingComponents": {
+		  "z-button": "/component/image-button/index"
+	}
 }

@@ -4,15 +4,7 @@ import {HTTP} from '../utils/http-p.js'
 
  class resourceService extends HTTP{
 	 
-	//  getResource(categoryId,status){
-	// 	 return this.request({
-	// 		 url:`resource/resource-by-category-id/${categoryId}`,
-	// 		 data:{
-	// 			 status: status
-	// 			 }
-	// 		 })
-		 
-	//  }
+
 
    getResource(page,pageSize,name,openId,categoryId, status) {
      return this.request({
@@ -46,17 +38,27 @@ import {HTTP} from '../utils/http-p.js'
 		 })
 	 }
 	 
-	 getResourceByOpenId(openId,status){
-		 
+	 
+	 findResourceById(openId,id){
 		 return this.request({
-			 url:"resource/get-resource",
-			 data: {
-				 openId:openId,
-				 status:status
-			 }
-			
+		 			 url:"resource/find-resource-by-id",
+		 			 data: {
+		 				 openId:openId,
+		 				 id:id
+		 			 }
+		 			
 		 })
 	 }
+	//  getResourceByOpenId(openId,status){
+	// 	 return this.request({
+	// 		 url:"resource/get-resource",
+	// 		 data: {
+	// 			 openId:openId,
+	// 			 status:status
+	// 		 }
+			
+	// 	 })
+	//  }
 	 
 
 	 

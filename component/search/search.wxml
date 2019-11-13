@@ -12,4 +12,9 @@
    <z-resource resource="{{elements}}" />
   </view>
 
+
+<z-loading  class="loading-center" wx:if="{{loadingCenter}}"/>
+<z-loading  class="loading" wx:if="{{loading}}"/>
+
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索相关资源</text>
   

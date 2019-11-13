@@ -6,9 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-      elements: [],
-      pageNo:1,
-      pageSize:10,
+	 id:null,
+   elements:[],
+   pageNo:1,
+   pageSize:10,
+   total:null,
+   noneResult:false,
+   loading:false,
+   loadingCenter:false
+  },
+
+  onReachBottom() {
+    
+	this.setData({
+		pageNo: this.data.pageNo +1 
+	})
+	if(this.data.elements.length >= this.data.total){
+		return ;
+	}
+	resource.getResource(this.data.pageNo, this.data.pageSize, "", "",this.data.id, 0).then(res =>{
+			const tempArray = this.data.elements.concat(res.content);
+			this.setData({
+				elements:tempArray
+			})
+	   	this._hideLoadingCenter();
+	})
   },
 
   /**
@@ -16,12 +38,54 @@ Page({
    */
   onLoad: function (options) {
     const id =options.id;
+	this.setData({
+		id
+	})
     resource.getResource(this.data.pageNo,this.data.pageSize,"","",id,0)
     .then(res=>this.setData({
-		       elements:res.content
+		       elements:res.content,
+			   total:res.totalElements
 	       }))
   },
 
+	_showLoadingCenter(){
+		this.setData({
+			loadingCenter:true
+		}) 
+	},
+	_hideLoadingCenter(){
+		this.setData({
+			loadingCenter:false
+		}) 
+	},
+		initialize(){
+			this.setData({
+			  elements:[],	
+			  pageNo:1,
+			  pageSize:10,
+			  noneResult:false,
+			  loading:false
+			})
+			this.data.total = null
+		
+		},
+		//当前是否是锁住的状态
+		isLock(){
+			return this.data.loading?true:false
+		},
+		//枷锁
+		locked(){
+			this.setData({
+				loading:true
+			}) 
+		},
+		//解锁
+		unlocked(){
+		this.setData({
+			loading:false
+		}) 
+		},
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -57,12 +121,6 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享

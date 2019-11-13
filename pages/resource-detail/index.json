@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+	  
+	  "z-modal":"/component/modal/index"
+  },
+  "navigationBarTitleText": "资源详情"
 }

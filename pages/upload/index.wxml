@@ -24,17 +24,17 @@
 	</view> -->
 	<view class="cu-form-group">
 		<view class="title">地址</view>
-		<input name="url" placeholder="请输入积分"></input>
+		<input name="url" placeholder="请输入网盘地址"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">密码</view>
-		<input name="password" placeholder="请输入积分"></input>
+		<input name="password" placeholder="请输入密码"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">积分</view>
 		<input name="integral" placeholder="请输入积分"></input>
 	</view>
-	<view class="cu-bar bg-white margin-top">
+	<!-- <view class="cu-bar bg-white margin-top">
 		<view class="action">
 			封面上传
 		</view>
@@ -51,7 +51,7 @@
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
-	</view>
+	</view> -->
 
 	<view class="cu-form-group align-start">
 		<view class="title">请输入描述内容</view>

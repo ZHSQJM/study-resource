@@ -71,6 +71,7 @@ page {
 	font-size: 28rpx;
 	color: var(--black);
 	font-family: Helvetica Neue, Helvetica, sans-serif;
+   height:100%;
 }
 
 view,

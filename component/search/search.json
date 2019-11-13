@@ -1,6 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-        "z-resource": "/component/resource/index"
-  }
+        "z-resource": "/component/resource/index",
+		"z-loading": "/component/loading/index"
+  },
+    "navigationBarTitleText": "搜索"
+  
 }
