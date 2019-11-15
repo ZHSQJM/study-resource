@@ -72,22 +72,28 @@
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <navigator class="cu-item arrow"  url="/pages/upload/index" hover-class="none">
       <view class="content">
-        <text class="cuIcon-github text-grey"></text>
+        <text class="cuIcon-text"></text>
         <text class="text-grey">提交资源</text>
       </view>
     </navigator>
 	<navigator class="cu-item arrow" url="/pages/myresource/index" hover-class="none">
 	  <view class="content">
-	    <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-	    <text class="text-grey">我的资源</text>
+	   <text class="cuIcon-share"></text>
+	    <text class="text-grey">我的分享</text>
 	  </view>
 	</navigator>
     <navigator class="cu-item arrow" url="/pages/myrcord/index" hover-class="none">
       <view class="content">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+      <text class="cuIcon-down"></text>
         <text class="text-grey">我的记录</text>
       </view>
     </navigator>
+	<view class="cu-item arrow">
+	  <view class="content" bindtap="showQrcode">
+	    <text class="cuIcon-qrcode"></text>
+	    <text class="text-grey">赞赏支持</text>
+	  </view>
+	</view>
   </view>
   <view class="cu-tabbar-height"></view>
     <!-- 登录 难点 服务器 微信支付 -->

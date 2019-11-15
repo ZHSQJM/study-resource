@@ -30,14 +30,19 @@ Page({
   
   
   exchange:function(event) {
-	  this.setData({
-		  isMoadl:true
-	  })
-	// exchanger.exchangerRecords('orwI44zPZZNYGpZ4ERTcZjYE9SAM',this.data.resource.id,this.data.resource.integral).then(res=>{
-	// 	console.log(res);
-	// 	this.data.resource.password = res;
-	// 	this.setData({isPassword:true,resource:this.data.resource})
-	// })
+	  wx.showModal({
+	    title: '兑换',
+	    content: '确定要兑换吗？',
+	    cancelText: '取消',
+	    confirmText: '确定',
+	    success: res => {
+			console.log("1123")
+	   // exchanger.exchangerRecords('orwI44zPZZNYGpZ4ERTcZjYE9SAM',this.data.resource.id,this.data.resource.integral).then(res=>{
+	   // 	console.log(res);
+	   // 	this.data.resource.password = res;
+	   // 	this.setData({isPassword:true,resource:this.data.resource})
+	   }
+  })
   },
   
   hideModal:function(event){

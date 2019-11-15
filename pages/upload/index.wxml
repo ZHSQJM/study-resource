@@ -34,7 +34,7 @@
 		<view class="title">积分</view>
 		<input name="integral" placeholder="请输入积分"></input>
 	</view>
-	<!-- <view class="cu-bar bg-white margin-top">
+	<view class="cu-bar bg-white margin-top">
 		<view class="action">
 			封面上传
 		</view>
@@ -47,11 +47,11 @@
 					<text class="cuIcon-close"></text>
 				</view>
 			</view>
-			<view class="solids" bindtap="ChooseImage">
+			<view class="solids" bindtap="ChooseImage" wx:if="{{iscamer}}">
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
-	</view> -->
+	</view>
 
 	<view class="cu-form-group align-start">
 		<view class="title">请输入描述内容</view>
@@ -63,3 +63,11 @@
 	  <button class="cu-btn bg-red margin-tb-sm lg"  formType="submit">提交</button>
 	</view>
 </form>
+<view class="cu-bar bg-white margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> 普通窗口
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="Modal">Modal</button>
+  </view>
+</view>

@@ -12,11 +12,11 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     index: null,
+	iscamer:true,
     picker: [],
     imgList: [],
     modalName: null,
-    textareaAValue: '',
-    textareaBValue: ''
+	
   },
 
 
@@ -48,6 +48,16 @@ Page({
 formSubmit: function(e) {
 	
 	console.log(e);
+	let name = e.detail.value.name;
+	if(name.length==0){
+	 
+	 return;
+	}
+	let description = e.detail.value.description;
+	let url = e.detail.value.url;
+	let password = e.detail.value.password;
+	let integeral =e.detail.value.integral;
+	
 	resource.addResource(e.detail.value.name,e.detail.value.description,e.detail.value.url,e.detail.value.password,e.detail.value.integral,"6587834690286260224","orwI44zPZZNYGpZ4ERTcZjYE9SAM").then(res =>{
 	wx.navigateTo("pages/myrcord/index")
 	});
@@ -65,17 +75,40 @@ formSubmit: function(e) {
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
+		  console.log(res.tempFilePaths[0]);
+		this.upload_file('http://192.168.8.65:8080/v1/api/upload', res.tempFilePaths[0])
         if (this.data.imgList.length != 0) {
           this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
+            imgList: this.data.imgList.concat(res.tempFilePaths),
+			iscamer: false
           })
         } else {
           this.setData({
-            imgList: res.tempFilePaths
+            imgList: res.tempFilePaths,
+			iscamer:false
           })
         }
+		
       }
     });
+  },
+  
+  upload_file: function (url, filePath) {
+  wx.uploadFile({
+  url: url,
+  filePath: filePath,
+  name: 'imagefile',
+  header: {
+  'content-type': 'multipart/form-data'
+  }, // 设置请求的 header
+  //formData: { 'guid':"procomment" }, // HTTP 请求中其他额外的 form data
+  success: function (res) {
+  console.log(res)
+  },
+  fail: function (res) {
+	  console.log(res)
+  }
+  })
   },
   ViewImage(e) {
     wx.previewImage({
@@ -95,7 +128,13 @@ formSubmit: function(e) {
           this.setData({
             imgList: this.data.imgList
           })
+		  if(this.data.imgList.length == 0){
+		  	this.setData({
+		  		iscamer:true
+		  	})
+		  }
         }
+		
       }
     })
   },
