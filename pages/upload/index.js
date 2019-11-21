@@ -16,7 +16,7 @@ Page({
     picker: [],
     imgList: [],
     modalName: null,
-	
+	token:null
   },
 
 
@@ -29,6 +29,10 @@ Page({
 
   
   onLoad: function (options) {
+	  
+	  this.setData({
+	  		  token:wx.getStorageSync('token') || []
+	  }),
   	  //获取类目
      category.getCategory().then(res=>{
   		 this.setData({picker:res})
@@ -46,19 +50,29 @@ Page({
 
 
 formSubmit: function(e) {
-	
-	console.log(e);
+	let description = e.detail.value.description;
+	let url = e.detail.value.url;
+	let password = e.detail.value.password;
+	let integeral =e.detail.value.integral;
 	let name = e.detail.value.name;
 	if(name.length==0){
 	 
 	 return;
 	}
-	let description = e.detail.value.description;
-	let url = e.detail.value.url;
-	let password = e.detail.value.password;
-	let integeral =e.detail.value.integral;
-	
-	resource.addResource(e.detail.value.name,e.detail.value.description,e.detail.value.url,e.detail.value.password,e.detail.value.integral,"6587834690286260224","orwI44zPZZNYGpZ4ERTcZjYE9SAM").then(res =>{
+	if(description.length==0){
+	 
+	 return;
+	}
+	if(url.length==0){
+	 
+	 return;
+	}
+	if(integeral.length==0){
+	 
+	 return;
+	}
+
+	resource.addResource(e.detail.value.name,e.detail.value.description,e.detail.value.url,e.detail.value.password,e.detail.value.integral,"6587834690286260224",token).then(res =>{
 	wx.navigateTo("pages/myrcord/index")
 	});
 	

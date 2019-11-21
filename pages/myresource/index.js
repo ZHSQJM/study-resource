@@ -16,19 +16,30 @@ Page({
 
   onReachBottom() {
 
-    this.setData({
-      pageNo: this.data.pageNo + 1
-    })
-    if (this.data.elements.length >= this.data.total) {
-      return;
-    }
-    resource.getResource(this.data.pageNo, this.data.pageSize, "", "orwI44zPZZNYGpZ4ERTcZjYE9SAM", "", 0).then(res => {
-      const tempArray = this.data.elements.concat(res.content);
-      this.setData({
-        elements: tempArray
-      })
-      this._hideLoadingCenter();
-    })
+
+   var token = wx.getStorageSync('token') || [];
+	   if(token){
+		this.setData({
+		  pageNo: this.data.pageNo + 1
+		})
+		if (this.data.elements.length >= this.data.total) {
+		  return;
+		}
+		resource.getResource(this.data.pageNo, this.data.pageSize, "", token, "", 0).then(res => {
+		  const tempArray = this.data.elements.concat(res.content);
+		  this.setData({
+		    elements: tempArray
+		  })
+		  this._hideLoadingCenter();
+		})
+	   }else{
+		   wx.showToast({
+		     title: 'token过期请重新授权',
+		     icon: "none",
+		     duration: 2000
+		   })
+	   }
+
   },
 
   /**

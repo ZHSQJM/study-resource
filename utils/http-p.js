@@ -26,16 +26,31 @@ class HTTP{
        success:(res)=>{
         const code =res.statusCode.toString();
         if(code.startsWith('2')){
-			resolve(res.data.data)
+			if(res.data.code==0){
+				resolve(res.data.data);
+			}else{
+				wx.showToast({
+				  title: res.data.msg,
+				  icon: "none",
+				  duration: 2000
+				})
+			}
         }else{
 			reject()
-          const error_code = res.data.code;
-          this.error_code(error_code);
+      wx.showToast({
+        title: '错误',
+        icon: "none",
+        duration: 2000
+      })
         }
        },
        fail:(err)=>{
 		   	reject()
-         this._show_error(1);
+        wx.showToast({
+          title: '错误',
+          icon: "none",
+          duration: 2000
+        })
        }
      })
   }

@@ -54,17 +54,17 @@
 
   <view class="padding flex text-center text-grey bg-white shadow-warp">
     <view class="flex flex-sub flex-direction solid-right">
-      <view class="text-xxl text-orange">{{visitTotal}}</view>
+      <view class="text-xxl text-orange">{{download}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-attentionfill"></text> 下载数</view>
     </view>
     <view class="flex flex-sub flex-direction solid-right">
-      <view class="text-xxl text-blue">{{starCount}}</view>
+      <view class="text-xxl text-blue">{{resourceId}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-favorfill"></text> 我的资源</view>
     </view>
     <view class="flex flex-sub flex-direction">
-      <view class="text-xxl text-green">{{forksCount}}</view>
+      <view class="text-xxl text-green">{{integral}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-fork"></text> 积分</view>
     </view>

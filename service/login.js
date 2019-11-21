@@ -9,11 +9,11 @@ import {HTTP} from '../utils/http-p.js'
 			 url:'wei-xin/wxLogin',
 			 method:'POST',
 			 data:{
-				code:code ,
-				avatarUrl:avatarUrl ,
-				gender:gender ,
-				nickName:nickName ,
-				province:province
+				code: code,
+				avatarUrl: avatarUrl,
+				gender: gender,
+				nickName: nickName,
+				province: province
 			 }
 			 })
 		 

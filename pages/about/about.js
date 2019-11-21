@@ -2,14 +2,18 @@ import {
 	LoginService
 } from '../../service/login.js'
 const login = new LoginService()
+import {
+	statisticsService
+} from '../../service/static.js'
+const statistics = new statisticsService()
 Page({
   options: {
     addGlobalClass: true,
   },
   data: {
-    starCount: 0,
-    forksCount: 0,
-    visitTotal: 0,
+    integral: 0,
+    download: 0,
+    resourceId: 0,
 	authorized: false,
 	userInfo: null,
 	userShow:true
@@ -18,8 +22,16 @@ Page({
   onLoad: function (options) {
   	  //判断是否已经授权
    this.userAuthorized();
-  	  
-          
+    var token = wx.getStorageSync('token') || []
+   	   if(token){
+  this.getStatic(token);
+          }else{
+			 wx.showToast({
+			   title: 'token过期请重新授权',
+			   icon: "none",
+			   duration: 2000
+			 })
+		  }
   },
  userAuthorized() {
      wx.getSetting({
@@ -37,10 +49,23 @@ Page({
        }
      })
    },
+   
+   getStatic(openId){
+	   console.log(openId)
+		   statistics.getPersonal(openId).then(res=>{
+			   
+			      console.log(res.integral);
+		   		  this.setData({
+					  integral:res.integral,
+					  download: res.download,
+					  resourceId: res.resourceId,
+				  })
+		   })
+	  
+   },
  
    onGetUserInfo(event) {
      const userInfo = event.detail.userInfo
-     // login(code,avatarUrl,gender,nickName,province){
      console.log(userInfo);
      if (userInfo) {
        this.setData({
@@ -51,7 +76,13 @@ Page({
 	wx.login({
 		success: res=>{
 			var code = res.code;
-			login.login(code,userInfo.avatarUrl,userInfo.gender,userInfo.nickName,userInfo.province).then();
+			 console.log(code+"==");
+			login.login(code,userInfo.avatarUrl,userInfo.gender,userInfo.nickName,userInfo.province).then(
+			res=>{
+				//设置缓存
+				  wx.setStorageSync('token', res.openid);
+				this.getStatic(res.openid)
+			});
 		}
 	})
    },

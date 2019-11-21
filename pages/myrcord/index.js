@@ -39,15 +39,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const id = options.id;
-    this.setData({
-      id
-    })
-    exchanger.getExchangerRecords("orwI44zPZZNYGpZ4ERTcZjYE9SAM",this.data.pageNo, this.data.pageSize)
-      .then(res => this.setData({
-        elements: res.content,
-        total: res.totalElements
-      }))
+	  const id = options.id;
+	  this.setData({
+	    id
+	  })
+	   var token = wx.getStorageSync('token') || [];
+	   if(token){
+		   exchanger.getExchangerRecords(token,this.data.pageNo, this.data.pageSize)
+		     .then(res => this.setData({
+		       elements: res.content,
+		       total: res.totalElements
+		     }))
+	   }else{
+		   wx.showToast({
+		     title: 'token过期请重新授权',
+		     icon: "none",
+		     duration: 2000
+		   })
+	   }
+  
+  
   },
 
   _showLoadingCenter() {
